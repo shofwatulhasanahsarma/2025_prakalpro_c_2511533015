@@ -119,6 +119,13 @@ public class OperatorAritmatikaGUI_2511533015 extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			int hasil;
 			public void actionPerformed(ActionEvent e) {
+				if (txtBil1.getText().trim().isEmpty()) {
+				pesanPeringatan("Bilangan 1 harus diisi");
+			} else if (txtBil2.getText().trim().isEmpty()) {
+				pesanPeringatan ("Bilangan 2 harus diisi");
+			}
+			else {
+				try {
 				int a= Integer.valueOf(txtBil1.getText());
 				int b= Integer.valueOf(txtBil2.getText());
 				int c= cbOperator.getSelectedIndex();
@@ -138,8 +145,12 @@ public class OperatorAritmatikaGUI_2511533015 extends JFrame {
 					hasil = a % b;
 				}
 				txtHasil.setText(String.valueOf(hasil));
-					
+				} catch (NumberFormatException ex) {
+				PesanError("Bilangan 1 dan 2 harus angka");
 			}
+			}
+			}
+			
 		});
 		btnNewButton.setBounds(295, 146, 84, 20);
 		contentPane.add(btnNewButton);
